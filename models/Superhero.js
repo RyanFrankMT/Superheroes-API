@@ -8,7 +8,7 @@ const SuperheroSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Superhero',SuperheroSchema);
 // The above code is how we can export and share with other
-//folders within this project
+//folders within this project (i.e. use in server.js)
 
 // 'Superhero' in the line above is the name in which we will
 //continue to use to call our schema
