@@ -26,7 +26,17 @@ app.get('/api', (req,res) => {
   console.log("No, now me!")
 })
 
-
+//GET SINGLE HERO
+app.get('/api/:hero_id', (req,res) => {
+  Superhero.findById(req.params.hero_id, (err, superhero) => {
+    if(err){
+      res.json({ message: err, data: null })
+    }
+    else{
+      res.json({ message: `Successfully retrieved hero: ${superhero.name}`, data: superhero })
+    }
+  })
+})
 
 // POST NEW HERO
 app.post('/api', (req,res) => {
