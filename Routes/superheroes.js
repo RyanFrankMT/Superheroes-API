@@ -22,4 +22,30 @@ Router.route('/')
   })
 })
 
+Router.route('/:hero_id')
+  .get((req,res) => {
+    Superhero.findById(req.params.hero_id, (err, superhero) => {
+      if(err) res.json({message: err, data: null})
+      res.json({message: `Successully retrieved hero: ${superhero.name}`, data: superhero})
+    })
+  })
+  .put((req,res) => {
+    Superhero.findById(req.params.hero_id, (err, superhero) => {
+      superhero.loadData(req.body)
+      superhero.setMetaDates()
+      superhero.save((err, superhero) => {
+        if(err) res.json({message: err, data: null})
+        res.json({message: `Successfully updated hero: ${superhero.name}`, data: superhero})
+      })
+    })
+  })
+  .delete((req,res) => {
+    Superhero.findById(req.params.hero_id, (err, superhero) => {
+      Superhero.remove({_id: req.params.hero_id}, (err) =>{
+        if(err) res.send({message: err, data: null})
+        res.send({message: `Superhero: ${superhero.name} successfully deleted!`, data: {}})
+      })
+    })
+  })
+
 module.exports = Router;
