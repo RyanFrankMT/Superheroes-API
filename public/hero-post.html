@@ -17,18 +17,26 @@
   <body>
 
     <div class="container" id="app">
-      <div class="container jumbotron heroes-title">
-        <h1>{{ title }}</h1>
+      <div class="container jumbotron hero-form-title">
+        <h1>{{ heroFormTitle }}</h1>
       </div>
-      <div class="container heroes-main">
-        <ul class="list-group heroes-list">
-          <li class="list-group-item hero-item" v-for="h in heroes">
-            <h3>Name: {{h.name}}</h3>
-            <p>Superpower: {{h.superpower}}</p>
-            <img :src="h.image" />
-          </li>
-        </ul>
-      </div>
+      <form v-on:submit.prevent="createHero">
+        <div class="form-group hero-form-field">
+          <label for="hero-name">Hero Name:</label>
+          <input type="text" class="form-control" id="hero-name" v-model="name" />
+        </div>
+        <div class="form-group hero-form-field">
+          <label for="hero-power">Hero Power:</label>
+          <input type="text" class="form-control" id="hero-power" v-model="superpower"/>
+        </div>
+        <div class="form-group hero-form-field">
+          <label for="hero-image">Hero Image:</label>
+          <input type="text" class="form-control" id="hero-image" v-model="image"/>
+        </div>
+        <div class="form-group hero-form-submit">
+          <button type="submit" class="btn-primary btn-block">Create Hero</button>
+        </div>
+      </form>
     </div>
     <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js"></script>
