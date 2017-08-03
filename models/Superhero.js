@@ -3,21 +3,21 @@ const mongoose = require('mongoose')
 const SuperheroSchema = new mongoose.Schema({
   name: {type: String, required: true},
   superpower: {type: String, required: true},
-  image: String,
+  image: {type: String, required: true},
   created: {type: Date, required: true},
   modified: {type: Date, required: true}
 })
 
 SuperheroSchema.methods.loadData = function(dataIn){
-  this.name = (dataIn.name) ? dataIn.name : this.name;
-  this.superpower = (dataIn.superpower) ? dataIn.superpower : this.superpower;
-  this.image = (dataIn.image) ? dataIn.image : this.image;
+  this.name = dataIn.name || this.name;
+  this.superpower = dataIn.superpower || this.superpower;
+  this.image = dataIn.image || this.image;
 }
 
 SuperheroSchema.methods.setMetaDates = function(){
-  let postDate = new Date()
+  const postDate = new Date()
 
-  this.created = (!this.created) ? postDate : this.created;
+  this.created = this.created || postDate;
   this.modified = postDate;
 }
 
