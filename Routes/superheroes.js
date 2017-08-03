@@ -4,7 +4,7 @@ const Superhero = require('../models/Superhero')
 
 Router.route('/')
   .get((req,res) => {
-    Superhero.find((err, superheroes) => {
+    Superhero.find((err,superheroes) => {
       // Inline if(err)
       if(err) res.json({message: err, data: null})
       //else
@@ -24,13 +24,13 @@ Router.route('/')
 
 Router.route('/:hero_id')
   .get((req,res) => {
-    Superhero.findById(req.params.hero_id, (err, superhero) => {
+    Superhero.findById(req.params.hero_id, (err,superhero) => {
       if(err) res.json({message: err, data: null})
-      res.json({message: `Successully retrieved hero: ${superhero.name}`, data: superhero})
+      res.json({message: `Successfully retrieved hero: ${superhero.name}`, data: superhero})
     })
   })
   .put((req,res) => {
-    Superhero.findById(req.params.hero_id, (err, superhero) => {
+    Superhero.findById(req.params.hero_id, (err,superhero) => {
       superhero.loadData(req.body)
       superhero.setMetaDates()
       superhero.save((err, superhero) => {
@@ -40,10 +40,10 @@ Router.route('/:hero_id')
     })
   })
   .delete((req,res) => {
-    Superhero.findById(req.params.hero_id, (err, superhero) => {
+    Superhero.findById(req.params.hero_id, (err,superhero) => {
       Superhero.remove({_id: req.params.hero_id}, (err) =>{
-        if(err) res.send({message: err, data: null})
-        res.send({message: `Superhero: ${superhero.name} successfully deleted!`, data: {}})
+        if(err) res.json({message: err, data: null})
+        res.json({message: `Superhero: ${superhero.name} successfully deleted!`, data: {}})
       })
     })
   })
