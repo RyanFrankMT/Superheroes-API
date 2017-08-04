@@ -17,8 +17,12 @@ Router.route('/')
   newHero.loadData(req.body)
   newHero.setMetaDates()
   newHero.save((err, newHero) => {
-    if(err) res.json({message: err, data: null});
-    res.json({message: `Successfully created new hero: ${newHero.name}`, data: newHero})
+    if(err) {
+      res.json({message: err, data: null})
+    }
+    else{
+      res.json({message: `Successfully created new hero: ${newHero.name}`, data: newHero})
+    }
   })
 })
 
@@ -34,8 +38,12 @@ Router.route('/:hero_id')
       superhero.loadData(req.body)
       superhero.setMetaDates()
       superhero.save((err, superhero) => {
-        if(err) res.json({message: err, data: null})
-        res.json({message: `Successfully updated hero: ${superhero.name}`, data: superhero})
+        if(err) {
+          res.json({message: err, data: null})
+        }
+        else{
+          res.json({message: `Successfully updated hero: ${superhero.name}`, data: superhero})
+        }
       })
     })
   })
