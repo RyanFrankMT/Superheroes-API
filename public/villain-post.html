@@ -16,25 +16,25 @@
   </head>
   <body>
 
-    <div class="container" id="app">
-      <div class="container jumbotron hero-form-title">
-        <h1>{{ heroFormTitle }}</h1>
+    <div class="container" id="villain">
+      <div class="container jumbotron villain-form-title">
+        <h1>{{ villainFormTitle }}</h1>
       </div>
-      <form v-on:submit.prevent="createHero">
-        <div class="form-group hero-form-field">
-          <label for="hero-name">Hero Name:</label>
-          <input type="text" class="form-control" id="hero-name" v-model="name" />
+      <form v-on:submit.prevent="createVillain">
+        <div class="form-group villain-form-field">
+          <label for="villain-name">Villain Name:</label>
+          <input type="text" name="form-control" id="villain-name" v-model="name" />
         </div>
-        <div class="form-group hero-form-field">
-          <label for="hero-power">Hero Power:</label>
-          <input type="text" class="form-control" id="hero-power" v-model="superpower"/>
+        <div class="form-group villain-form-field">
+          <label for="villain-power">Villain Power:</label>
+          <input type="text" name="form-control" id="villain-power" v-model="power" />
         </div>
-        <div class="form-group hero-form-field">
-          <label for="hero-image">Hero Image:</label>
-          <input type="text" class="form-control" id="hero-image" v-model="image"/>
+        <div class="form-group villain-form-field">
+          <label for="villain-image">Villain Image:</label>
+          <input type="text" name="form-control" id="villain-image" v-model="image" />
         </div>
-        <div class="form-group hero-form-submit">
-          <button type="submit" class="btn-primary btn-block">Create Hero</button>
+        <div class="form-group villain-form-submit">
+          <button type="submit" name="btn-primary btn-block">Create Villain</button>
         </div>
       </form>
     </div>
@@ -42,6 +42,6 @@
     <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/vue"></script>
-    <script type="text/javascript" src="hero.js"></script>
+    <script type="text/javascript" src="villain.js"></script>
   </body>
 </html>

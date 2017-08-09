@@ -60,7 +60,6 @@ const app = new Vue({
         superpower: (self.superpower.length > 0) ? self.superpower: null,
         image: (self.image.length > 0) ? self.image : null
       }
-      console.log('wheres the error')
       $.ajax({
         url: `/api/superheroes/${self.selectedHero}`,
         method: 'PUT',
